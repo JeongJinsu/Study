@@ -9,13 +9,13 @@ import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Optional;
 
-@Service
+//@Service
 public class MemberService {
 
     //private final MemberRepository memberRepository = new MemoryMemberRepository();
     //DI.. MemberService 입장에선, 외부에서 생성자 파라미터를 통해 MemberRepository 객체를 받는다
     private final MemberRepository memberRepository;
-    @Autowired
+    //@Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
