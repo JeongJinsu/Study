@@ -1,4 +1,5 @@
 package hello.hellospring.service;
+
 import hello.hellospring.domain.Member;
 import hello.hellospring.repository.MemberRepository;
 import hello.hellospring.repository.MemoryMemberRepository;
@@ -33,6 +34,7 @@ class MemberServiceIntegrationTest {
         Member findMember = memberRepository.findById(saveId).get();
         assertEquals(member.getName(), findMember.getName());
     }
+
     @Test
     public void 중복_회원_예외() throws Exception {
         //Given

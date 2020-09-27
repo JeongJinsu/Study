@@ -12,6 +12,7 @@ public class MemberService {
     //private final MemberRepository memberRepository = new MemoryMemberRepository();
     //DI.. MemberService 입장에선, 외부에서 생성자 파라미터를 통해 MemberRepository 객체를 받는다
     private final MemberRepository memberRepository;
+
     //@Autowired
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
@@ -39,6 +40,7 @@ public class MemberService {
         memberRepository.save(member);
         return member.getId();
     }
+
     //이름 중복 확인 메소드
     //Refactor -> Generate Method 를 이용해 별도 로직으로 뺌
     private void validateDuplicateMember(Member member) {
@@ -51,14 +53,16 @@ public class MemberService {
 
     /**
      * 전체 회원 조회
+     *
      * @return
      */
-    public List<Member> findMemebers(){
+    public List<Member> findMemebers() {
         return memberRepository.findAll();
     }
 
     /**
      * 회원 한명 조회
+     *
      * @param memberId
      * @return
      */
@@ -66,7 +70,6 @@ public class MemberService {
 
         return memberRepository.findById(memberId);
     }
-
 
 
 }

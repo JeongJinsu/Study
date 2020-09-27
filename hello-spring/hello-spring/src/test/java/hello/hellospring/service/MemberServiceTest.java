@@ -14,9 +14,9 @@ class MemberServiceTest {
     MemoryMemberRepository memberRepository;
 
     @BeforeEach
-    public void beforeEach(){
-        memberRepository=new MemoryMemberRepository();
-        memberService=new MemberService(memberRepository);
+    public void beforeEach() {
+        memberRepository = new MemoryMemberRepository();
+        memberService = new MemberService(memberRepository);
     }
 
     @Test
@@ -29,7 +29,7 @@ class MemberServiceTest {
         Long saveId = memberService.join(member);
         //then
 
-        Member findMember =memberService.findOne(saveId).get();
+        Member findMember = memberService.findOne(saveId).get();
         assertThat(member.getName()).isEqualTo(findMember.getName()); //import static 사용 근데 왜?? 그냥 임포트 해논 상태로 써도 되는거아닌가?
 
 
