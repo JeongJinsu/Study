@@ -15,7 +15,7 @@
     -->
 
     <!--
-    2. 위 고전적 방법은 일일이 코드를 작성해야 하는 불편함이 존재. 아래같은 @애노테이션 기반의 컴포넌트 스캔 방법이 등장함-->
+    2. 위 고전적 방법은 일일이 코드를 작성해야 하는 불편함이 존재. 아래같은 @애노테이션 기반의 컴포넌트 스캔 방법이 등장함
     <context:component-scan base-package="me.whiteship.springapplicationcontext"/>
-
+    -->
 </beans>
