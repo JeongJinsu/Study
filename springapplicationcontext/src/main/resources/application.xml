@@ -1,8 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
-
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context https://www.springframework.org/schema/context/spring-context.xsd">
+    <!--
+    1. 고전적 xml을 이용해 IOC 컨테이너에 Bean을 등록하고, property옵션을 통해 Autowired 받는 방법
     <bean id="bookService"
           class="me.whiteship.springapplicationcontext.service.BookService">
         <property name="bookRepository" ref="bookRepository"/>
@@ -10,5 +12,10 @@
 
     <bean id="bookRepository"
           class="me.whiteship.springapplicationcontext.repository.BookRepository"/>
+    -->
+
+    <!--
+    2. 위 고전적 방법은 일일이 코드를 작성해야 하는 불편함이 존재. 아래같은 @애노테이션 기반의 컴포넌트 스캔 방법이 등장함-->
+    <context:component-scan base-package="me.whiteship.springapplicationcontext"/>
 
 </beans>
