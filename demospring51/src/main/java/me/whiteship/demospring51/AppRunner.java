@@ -4,7 +4,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.ApplicationContext;
+import org.springframework.core.env.Environment;
 import org.springframework.stereotype.Component;
+
+import java.util.Arrays;
 
 @Component
 public class AppRunner implements ApplicationRunner {
@@ -12,21 +15,13 @@ public class AppRunner implements ApplicationRunner {
     @Autowired
     ApplicationContext ctx;
 
+    @Autowired
+    BookRepository bookRepository;
+
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        System.out.println("proto");
-        System.out.println(ctx.getBean(Proto.class)); //Proto@3078cac
-        System.out.println(ctx.getBean(Proto.class)); //Proto@f6de586
-        System.out.println(ctx.getBean(Proto.class)); //Proto@5f2bd6d9
-
-        System.out.println("single");
-        System.out.println(ctx.getBean(Single.class)); //Single@43d9f1a2
-        System.out.println(ctx.getBean(Single.class)); //Single@43d9f1a2
-        System.out.println(ctx.getBean(Single.class)); //Single@43d9f1a2
-
-        System.out.println("proto by single");
-        System.out.println(ctx.getBean(Single.class).getProto()); //Proto@63dfada0
-        System.out.println(ctx.getBean(Single.class).getProto()); //Proto@6f231ced
-        System.out.println(ctx.getBean(Single.class).getProto()); //Proto@35a60674
+        Environment environment = ctx.getEnvironment();
+        System.out.println(Arrays.toString(environment.getActiveProfiles()));
+        System.out.println(Arrays.toString(environment.getDefaultProfiles()));
     }
 }
