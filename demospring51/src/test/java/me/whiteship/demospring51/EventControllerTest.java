@@ -9,7 +9,7 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.content;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
-@WebMvcTest
+@WebMvcTest({EventController.class, EventConverter.StringToEventConverter.class}) //자동 추가가 안될시, 테스트에 필요한 빈들을 명시적으로 추가함
 class EventControllerTest {
 
     @Autowired
