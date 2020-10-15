@@ -13,8 +13,8 @@ public class AppRunner implements ApplicationRunner {
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
-        eventService.createEvent();
-        eventService.publishEvent();
-        eventService.deleteEvent();
+        eventService.createEvent(null); //Passing 'null' argument to parameter annotated as @NotNull
+                                              //@NotNull로 주석이 달린 매개 변수에 'null'인수 전달
+
     }
 }
