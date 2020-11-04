@@ -13,7 +13,8 @@ public class SimpleController implements Controller {
 
     @Override
     public ModelAndView handleRequest(HttpServletRequest request, HttpServletResponse response) throws Exception {
-        return new ModelAndView("/WEB-INF/simple.jsp");
+        //return new ModelAndView("/WEB-INF/simple.jsp");
+        return new ModelAndView("simple");  // WebConfig에서 뷰리졸버 커스텀했기에 이렇게 줄여서 쓸 수 있다
     }
 
 }
