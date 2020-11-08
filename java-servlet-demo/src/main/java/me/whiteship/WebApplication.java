@@ -8,6 +8,7 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRegistration;
 
+//web.xml을 쓰거나, 자바설정인 WebApplicationInitializer를 구현하는 방법으로 디스패쳐 서블릿을 등록
 public class WebApplication implements WebApplicationInitializer {
 
     @Override
