@@ -25,9 +25,9 @@ public class SampleController {
     }
     */
 
-    //requestParam으로 받을때 (localhost:8080/hello?name=keesun)
+    //requestParam으로 받을때 ('스프링 데이터 JPA' 기능 중 '도메인 클래스 컨버터'를 사용)
     @GetMapping("/hello")
-    public String hello(@RequestParam("name") Person person){
+    public String hello(@RequestParam("id") Person person){
         return "hello " + person.getName();
     }
 

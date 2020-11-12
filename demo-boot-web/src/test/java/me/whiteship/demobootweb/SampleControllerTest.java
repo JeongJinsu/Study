@@ -23,9 +23,17 @@ public class SampleControllerTest {
     @Autowired
     MockMvc mockMvc;
 
+    @Autowired
+    PersonRepository personRepository;
+
     @Test
     public void hello() throws Exception {
-        this.mockMvc.perform(get("/hello").param("name","keesun"))
+        Person person = new Person();
+        person.setName("keesun");
+        Person savePerson = personRepository.save(person);
+
+        //.param 자리엔 스트링 타입만 올 수 있어서 .getId()인 Long 타입을 스트링으로 변환해 값을 넘김
+        this.mockMvc.perform(get("/hello").param("id", Long.toString(savePerson.getId())))
                 .andDo(print())
                 .andExpect(content().string("hello keesun"));
     }
