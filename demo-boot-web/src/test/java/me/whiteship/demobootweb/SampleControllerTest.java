@@ -1,5 +1,6 @@
 package me.whiteship.demobootweb;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.hamcrest.Matchers;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -7,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.web.servlet.AutoConfigureMockMvc;
 import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.http.MediaType;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
@@ -27,6 +29,10 @@ public class SampleControllerTest {
 
     @Autowired
     PersonRepository personRepository;
+
+    //Jackson이 제공하는 클래스로, json문자열 객체를 만들 수 있는 기능을 제공한다
+    @Autowired
+    ObjectMapper objectMapper;
 
     @Test
     public void hello() throws Exception {
@@ -62,5 +68,21 @@ public class SampleControllerTest {
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(content().string("hello"));
+    }
+
+    @Test
+    public void jsonMessage() throws Exception {
+        Person person = new Person();
+        person.setId(2019L);
+        person.setName("keesun");
+
+        String jsonString = objectMapper.writeValueAsString(person);    // {"id":2019,"name":"keesun"}
+
+        this.mockMvc.perform(get("/jsonMessage").content(jsonString)
+                .contentType(MediaType.APPLICATION_JSON)    // 본문에 JSON을 담아서 보낼것이다. 라고 서버에 알려준다
+                .accept(MediaType.APPLICATION_JSON))        // JSON으로 응답이 오길 바란다. 라고 서버에 알려준다
+                                            // 스프링은 위 두 정보를 기반으로, 'JSON HTTP 메시지 컨버터'를 사용하게 된다
+                .andDo(print())
+                .andExpect(status().isOk());
     }
 }

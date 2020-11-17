@@ -33,4 +33,9 @@ public class SampleController {
     public String message(@RequestBody String body) {
         return body;
     }
+
+    @GetMapping("/jsonMessage")
+    public Person jsonMessage(@RequestBody Person person) {     // 요청에 들어있는 JSON문자열을 Person 객체로 받아온다
+        return person;                                          // 객체를 JSON문자열로 응답에 보낸다
+    }
 }
