@@ -55,4 +55,12 @@ public class SampleControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(content().string(Matchers.containsString("hello mobile")));
     }
+
+    @Test
+    public void stringMessage() throws Exception {
+        this.mockMvc.perform(get("/message").content("hello"))
+                .andDo(print())
+                .andExpect(status().isOk())
+                .andExpect(content().string("hello"));
+    }
 }
