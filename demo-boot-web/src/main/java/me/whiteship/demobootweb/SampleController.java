@@ -38,4 +38,9 @@ public class SampleController {
     public Person jsonMessage(@RequestBody Person person) {     // 요청에 들어있는 JSON문자열을 Person 객체로 받아온다
         return person;                                          // 객체를 JSON문자열로 응답에 보낸다
     }
+
+    @GetMapping("/xmlMessage")
+    public Person xmlMessage(@RequestBody Person person) {      // 요청에 들어있는 xml을 Person 객체로 받아온다
+        return person;                                          // 객체를 xml로 응답에 보낸다
+    }
 }

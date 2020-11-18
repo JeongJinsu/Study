@@ -1,7 +1,9 @@
 package me.whiteship.demobootweb;
 
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.format.FormatterRegistry;
+import org.springframework.oxm.jaxb.Jaxb2Marshaller;
 import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -15,6 +17,13 @@ public class WebConfig implements WebMvcConfigurer {
         registry.addFormatter(new PersonFormatter());
     }
     */
+
+    @Bean
+    public Jaxb2Marshaller jaxb2Marshaller(){
+        Jaxb2Marshaller jaxb2Marshaller = new Jaxb2Marshaller();
+        jaxb2Marshaller.setPackagesToScan(Person.class.getPackageName());   // 도메인 객체가 들어있는 패키지 이름을 인자로 주어야 한다
+        return jaxb2Marshaller;                                             // 도메인 객체가 .setPackagesToScan 에 의해 스캔 될수 있도록
+    }                                                                       // @XmlRootElement를 도메인 클래스에 달아줘야 한다
 
     @Override
     public void addInterceptors(InterceptorRegistry registry) {
